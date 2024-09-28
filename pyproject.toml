@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "yoomoney-bot"
+version = "0.1.0"
+description = ""
+authors = ["Ivan Stasevich <pravitel2015ify@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+aiogram = "^3.13.1"
+pydantic-settings = "^2.5.2"
+yoomoney = "^0.1.1"
+requests = "^2.32.3"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.6.8"
+mypy = "^1.11.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+fix = true
+indent-width = 4
+line-length = 79
+src = ["src"]
+target-version = "py312"
+
+[tool.ruff.format]
+docstring-code-format = true
+
+
+[tool.mypy]
+strict = true
+pretty = true
+plugins = "pydantic.mypy"
+
+[[tool.mypy.overrides]]
+module = "*.*"
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
