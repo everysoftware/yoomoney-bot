@@ -60,8 +60,9 @@ async def check_payment(callback: types.CallbackQuery, state: FSMContext) -> Non
         return
     if check_quick_pay(pay_state):
         await state.update_data(is_subscribed=True)
-        await callback.answer("Подписка успешно оформлена!")
+        await callback.message.answer("Подписка успешно оформлена!")
     else:
-        await callback.answer(
+        await callback.message.answer(
             "Оплата не удалась. Попробуйте проверить позже или повторите попытку."
         )
+    await callback.answer()
